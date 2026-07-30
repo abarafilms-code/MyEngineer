@@ -1,0 +1,35 @@
+# MyEngineer Dependencies
+
+# AI and Machine Learning
+torch
+torchvision
+transformers
+
+# Computer Vision
+opencv-python
+pillow
+
+# Data Processing
+numpy
+pandas
+
+# API and Backend
+fastapi
+uvicorn
+
+# Configuration
+python-dotenv
+
+# CAD and Geometry
+trimesh
+numpy-stl
+
+# 3D file processing
+open3d
+
+# Database
+sqlalchemy
+
+# Utilities
+requests
+tqdm
