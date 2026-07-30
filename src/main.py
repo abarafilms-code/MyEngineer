@@ -1,19 +1,27 @@
 """
 MyEngineer Main System
 
-Главная точка запуска AI-инженера.
+Главное ядро инженерного AI.
 
-Объединяет все инженерные агенты:
-- Vision
-- Engineering
-- CAD
-- Material
-- Manufacturing
-- Product
+Поток:
+
+Фото объекта
+        ↓
+Vision Agent
+        ↓
+Database Agent
+        ↓
+Engineering Agent
+        ↓
+CAD Agent
+        ↓
+Material Agent
+        ↓
+Manufacturing Agent
+        ↓
+Product Agent
 """
 
-
-from orchestrator.main import MyEngineerOrchestrator
 
 from vision_agent.vision import VisionAgent
 
@@ -27,19 +35,18 @@ from manufacturing_agent.manufacturing import ManufacturingAgent
 
 from product_agent.product import ProductAgent
 
+from database_agent.database import DatabaseAgent
+
 
 
 class MyEngineerSystem:
-    """
-    Главная система MyEngineer.
-    """
 
 
     def __init__(self):
 
-        self.orchestrator = MyEngineerOrchestrator()
-
         self.vision = VisionAgent()
+
+        self.database = DatabaseAgent()
 
         self.engineering = EngineeringAgent()
 
@@ -55,24 +62,28 @@ class MyEngineerSystem:
 
     def run(self, request):
 
+
         print("\n======================")
 
-        print(" MYENGINEER AI SYSTEM ")
+        print(" MYENGINEER AI ")
 
         print("======================\n")
 
 
-        print("TASK:")
+
+        print("Задача:")
 
         print(request)
 
 
 
-        print("\n--- Vision Analysis ---")
+        # 1. Анализ изображения
+
+        print("\n1. Vision Agent")
 
         vision_result = self.vision.describe_object(
 
-            "input_image.jpg"
+            "object_photo.jpg"
 
         )
 
@@ -80,7 +91,19 @@ class MyEngineerSystem:
 
 
 
-        print("\n--- Engineering Analysis ---")
+        # 2. Поиск в памяти
+
+        print("\n2. Database Agent")
+
+
+        self.database.show_memory()
+
+
+
+        # 3. Инженерный анализ
+
+        print("\n3. Engineering Agent")
+
 
         engineering_result = self.engineering.analyze_part(
 
@@ -92,31 +115,10 @@ class MyEngineerSystem:
 
 
 
-        print("\n--- Material Selection ---")
+        # 4. CAD
 
-        material_result = self.material.recommend_material(
+        print("\n4. CAD Agent")
 
-            "Инженерная деталь с нагрузкой"
-
-        )
-
-        print(material_result)
-
-
-
-        print("\n--- Manufacturing Selection ---")
-
-        manufacturing_result = self.manufacturing.select_machine(
-
-            request
-
-        )
-
-        print(manufacturing_result)
-
-
-
-        print("\n--- CAD Planning ---")
 
         cad_result = self.cad.create_model_plan(
 
@@ -128,7 +130,40 @@ class MyEngineerSystem:
 
 
 
-        print("\n--- Product Creation ---")
+        # 5. Материал
+
+        print("\n5. Material Agent")
+
+
+        material_result = self.material.recommend_material(
+
+            request
+
+        )
+
+        print(material_result)
+
+
+
+        # 6. Производство
+
+        print("\n6. Manufacturing Agent")
+
+
+        manufacturing_result = self.manufacturing.select_machine(
+
+            request
+
+        )
+
+        print(manufacturing_result)
+
+
+
+        # 7. Продукт
+
+        print("\n7. Product Agent")
+
 
         product_result = self.product.create_product_card(
 
@@ -142,10 +177,9 @@ class MyEngineerSystem:
 
         print("\n======================")
 
-        print(" ENGINEERING COMPLETE ")
+        print("MYENGINEER COMPLETE")
 
         print("======================")
-
 
 
 
@@ -153,11 +187,12 @@ class MyEngineerSystem:
 if __name__ == "__main__":
 
 
-    system = MyEngineerSystem()
+    my_engineer = MyEngineerSystem()
 
 
-    system.run(
 
-        "Создать улучшенную автомобильную деталь методом 3D печати"
+    my_engineer.run(
+
+        "Создать улучшенную автомобильную деталь для 3D печати"
 
     )
