@@ -1,0 +1,58 @@
+{
+    "materials": {
+        "ASA": {
+            "UV_resistance": "high",
+            "outdoor_use": true,
+            "automotive": true
+        },
+
+        "PA-CF": {
+            "strength": "high",
+            "stiffness": "high",
+            "engineering": true
+        },
+
+        "PETG": {
+            "easy_printing": true,
+            "prototype": true
+        },
+
+        "SLA Resin": {
+            "detail": "very_high",
+            "models": true
+        }
+    },
+
+
+    "printers": {
+
+        "QIDI Max4 Combo": {
+            "large_volume": true,
+            "engineering_materials": true
+        },
+
+
+        "Maestro Solo": {
+            "production": true,
+            "series_parts": true
+        },
+
+
+        "Apex Maker Mini SLA": {
+            "precision": true,
+            "miniatures": true
+        }
+
+    },
+
+
+    "engineering_rules": [
+
+        "Автомобильные наружные детали: ASA",
+
+        "Силовые детали: PA-CF",
+
+        "Детализация: SLA"
+
+    ]
+}
