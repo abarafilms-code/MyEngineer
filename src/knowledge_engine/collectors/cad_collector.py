@@ -1,12 +1,14 @@
 """
-CAD Collector prototype.
+CAD Model Collector v0.2.
 
-Searches existing 3D models before creating new geometry.
+Search existing 3D models before creating new geometry.
 
 Sources planned:
-- CAD repositories
-- Open hardware libraries
-- STL/STEP model platforms
+- GrabCAD
+- Printables
+- Thingiverse
+- Cults3D
+- GitHub CAD repositories
 - manufacturer CAD libraries
 """
 
@@ -18,6 +20,12 @@ class CADCollector:
         return {
             "type": "cad_model",
             "query": query,
+            "search_strategy": [
+                "existing CAD model search",
+                "STEP/STL availability check",
+                "manufacturer library search",
+                "open source license verification"
+            ],
             "formats": ["STEP", "STL", "OBJ", "DXF"],
             "results": []
         }
