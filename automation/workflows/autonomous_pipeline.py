@@ -45,6 +45,9 @@ from automation.agents.digital_twin_agent import DigitalTwinAgent
 from automation.agents.predictive_maintenance_agent import PredictiveMaintenanceAgent
 from automation.agents.production_optimizer_agent import ProductionOptimizerAgent
 from automation.agents.factory_manager_agent import FactoryManagerAgent
+from automation.agents.customer_order_agent import CustomerOrderAgent
+from automation.agents.sales_agent import SalesAgent
+from automation.agents.order_to_factory_agent import OrderToFactoryAgent
 
 
 
@@ -198,6 +201,18 @@ class AutonomousPipeline:
 
         self.manager.register(
             FactoryManagerAgent()
+        )
+
+        self.manager.register(
+            CustomerOrderAgent()
+        )
+
+        self.manager.register(
+            SalesAgent()
+        )
+
+        self.manager.register(
+            OrderToFactoryAgent()
         )
 
 

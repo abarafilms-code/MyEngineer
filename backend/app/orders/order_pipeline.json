@@ -1,0 +1,5 @@
+{
+    "pipeline": "CUSTOMER_TO_FACTORY",
+    "status": "ACTIVE",
+    "automation": true
+}
