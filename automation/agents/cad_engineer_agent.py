@@ -1,48 +1,83 @@
+import os
+
+
 class CADEngineerAgent:
 
     name = "cad_engineer_agent"
 
+
     def run(self, context):
 
-        print("\nCAD Engineer Agent:")
-
-        files = context.get(
-            "analysis",
+        decision = context.get(
+            "decision",
             {}
-        ).get(
-            "files",
-            []
         )
 
-        cad_files = []
-
-        for file in files:
-            if "cad" in file.lower():
-                cad_files.append(file)
-
-        analysis = {
-            "cad_files": cad_files,
-            "issues": [],
-            "recommendations": []
+        result = {
+            "analysis": [],
+            "recommendations": [],
+            "files_checked": []
         }
 
-        if cad_files:
-            analysis["recommendations"].extend([
-                "Check geometry constraints",
-                "Validate parametric dimensions",
-                "Improve manufacturing compatibility"
-            ])
 
-        else:
-            analysis["recommendations"].append(
-                "Create CAD architecture layer"
-            )
-
-        context["cad_analysis"] = analysis
-
-        print(
-            "CAD files found:",
-            len(cad_files)
+        targets = decision.get(
+            "targets",
+            [
+                "backend/app/cad_engine"
+            ]
         )
+
+
+        for target in targets:
+
+            if os.path.exists(target):
+
+                for root, dirs, files in os.walk(target):
+
+                    for file in files:
+
+                        if file.endswith(".py"):
+
+                            path = os.path.join(
+                                root,
+                                file
+                            )
+
+                            result["files_checked"].append(path)
+
+                            with open(
+                                path,
+                                "r",
+                                errors="ignore"
+                            ) as f:
+
+                                content = f.read()
+
+
+                            if "TODO" in content:
+                                result["recommendations"].append(
+                                    f"Implement TODO in {path}"
+                                )
+
+
+                            if "pass" in content:
+                                result["recommendations"].append(
+                                    f"Review empty implementation in {path}"
+                                )
+
+
+        result["analysis"].append(
+            "CAD architecture inspection completed"
+        )
+
+
+        context["cad_engineer"] = result
+
+
+        print("\nCAD Engineer Report:")
+        print(
+            f"Files checked: {len(result['files_checked'])}"
+        )
+
 
         return context
