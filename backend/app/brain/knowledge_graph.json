@@ -1,0 +1,13 @@
+{
+    "nodes": [],
+    "relations": [
+        {
+            "source": {
+                "name": "PETG",
+                "reason": "selected by engineering rules"
+            },
+            "relation": "validated_material",
+            "target": "engineering_database"
+        }
+    ]
+}
