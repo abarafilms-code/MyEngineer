@@ -9,6 +9,7 @@ from automation.agents.patch_agent import PatchAgent
 from automation.agents.developer_agent import DeveloperAgent
 from automation.agents.cad_engineer_agent import CADEngineerAgent
 from automation.agents.geometry_agent import GeometryAgent
+from automation.agents.cad_generator_agent import CADGeneratorAgent
 from automation.agents.simulation_agent import SimulationAgent
 from automation.agents.test_agent import TestAgent
 from automation.agents.reviewer_agent import ReviewerAgent
@@ -51,6 +52,10 @@ class AutonomousPipeline:
 
         self.manager.register(
             GeometryAgent()
+        )
+
+        self.manager.register(
+            CADGeneratorAgent()
         )
 
         self.manager.register(
