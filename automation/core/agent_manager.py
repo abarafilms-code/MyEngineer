@@ -11,19 +11,14 @@ class AgentManager:
 
     def register(self, agent):
 
-        self.pipeline.append(agent)
+        self.pipeline.append(
+            agent
+        )
 
 
-    def run(self, task):
+    def run(self, context):
 
-        context = {
-            "task": task,
-            "files": [],
-            "plan": [],
-            "changes": [],
-            "knowledge": {},
-            "results": {}
-        }
+        current_context = context
 
 
         for agent in self.pipeline:
@@ -34,18 +29,13 @@ class AgentManager:
 
 
             result = agent.run(
-                context
+                current_context
             )
 
 
             if isinstance(result, dict):
 
-                context.update(
-                    result
-                )
+                current_context = result
 
 
-            context["results"][agent.name] = result
-
-
-        return context
+        return current_context
