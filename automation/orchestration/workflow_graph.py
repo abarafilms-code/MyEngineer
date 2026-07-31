@@ -53,12 +53,33 @@ class WorkflowGraph:
         self.add_node(
             "stress_analysis_agent",
             [
-                "manufacturing_agent"
+                "engineering_brain_agent"
             ]
         )
 
         self.add_node(
             "thermal_analysis_agent",
+            [
+                "engineering_brain_agent"
+            ]
+        )
+
+        self.add_node(
+            "engineering_brain_agent",
+            [
+                "failure_analyzer_agent"
+            ]
+        )
+
+        self.add_node(
+            "failure_analyzer_agent",
+            [
+                "self_learning_agent"
+            ]
+        )
+
+        self.add_node(
+            "self_learning_agent",
             [
                 "manufacturing_agent"
             ]
