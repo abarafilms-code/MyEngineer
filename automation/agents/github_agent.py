@@ -1,4 +1,3 @@
-
 import subprocess
 
 
@@ -9,10 +8,24 @@ class GithubAgent:
 
     def commit(self, message):
 
+        status = subprocess.run(
+            ["git", "status", "--porcelain"],
+            capture_output=True,
+            text=True
+        )
+
+        if not status.stdout.strip():
+            return {
+                "committed": False,
+                "message": "No changes"
+            }
+
+
         subprocess.run(
-            ["git","add","."],
+            ["git", "add", "."],
             check=True
         )
+
 
         subprocess.run(
             [
@@ -23,6 +36,12 @@ class GithubAgent:
             ],
             check=True
         )
+
+
+        return {
+            "committed": True,
+            "message": message
+        }
 
 
     def push(self):
