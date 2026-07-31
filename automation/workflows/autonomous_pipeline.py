@@ -5,6 +5,7 @@ from automation.agents.analyzer_agent import AnalyzerAgent
 from automation.agents.decision_agent import DecisionAgent
 from automation.agents.planner_agent import PlannerAgent
 from automation.agents.coder_agent import CoderAgent
+from automation.agents.patch_agent import PatchAgent
 from automation.agents.developer_agent import DeveloperAgent
 from automation.agents.cad_engineer_agent import CADEngineerAgent
 from automation.agents.test_agent import TestAgent
@@ -48,6 +49,10 @@ class AutonomousPipeline:
 
         self.manager.register(
             CoderAgent()
+        )
+
+        self.manager.register(
+            PatchAgent()
         )
 
         self.manager.register(
