@@ -3,43 +3,45 @@ from backend.app.cad_engine.kernel.cad_kernel import CADKernel
 
 class CADKernelAgent:
 
+
     name = "cad_kernel_agent"
 
 
-    def run(self, context):
 
-        print("\nCAD Kernel Agent:")
-
+    def run(
+        self,
+        context
+    ):
 
         kernel = CADKernel()
 
 
-        model = kernel.box(
+        solid = kernel.box(
             100,
             50,
             20
         )
 
 
-        validation = kernel.validate(
-            model
+        mass = kernel.estimate_mass(
+            solid["volume_mm3"],
+            1.27
         )
 
 
-        context["cad_kernel"] = {
+        solid["material_density"] = 1.27
+        solid["estimated_mass_grams"] = mass
 
-            "model": model,
 
-            "valid":
-
-                validation
-
-        }
+        context["cad_kernel"] = solid
 
 
         print(
-            "Solid generated:",
-            model
+            "CAD Kernel:"
+        )
+
+        print(
+            solid
         )
 
 

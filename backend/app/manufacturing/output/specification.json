@@ -1,12 +1,14 @@
 {
     "cad": {
-        "model": {
-            "type": "box",
+        "type": "box",
+        "dimensions": {
             "width": 100,
             "height": 50,
             "depth": 20
         },
-        "valid": true
+        "volume_mm3": 100000,
+        "material_density": 1.27,
+        "estimated_mass_grams": 127.0
     },
     "material": {
         "name": "PETG",
