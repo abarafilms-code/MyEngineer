@@ -2,6 +2,7 @@ from automation.core.agent_manager import AgentManager
 from backend.app.decision.decision_engine import DecisionEngine
 from backend.app.context.engineering_context import EngineeringContext
 from automation.orchestration.agent_router import AgentRouter
+from backend.app.reports.product_passport import ProductPassport
 
 from automation.agents.task_agent import TaskAgent
 from automation.agents.analyzer_agent import AnalyzerAgent
@@ -264,6 +265,14 @@ class AutonomousPipeline:
 
         print(
             self.context.summary()
+        )
+
+
+        
+        passport = ProductPassport()
+
+        passport.save(
+            self.context
         )
 
 

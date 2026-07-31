@@ -1,0 +1,39 @@
+{
+    "project": {
+        "task": "Improve CAD generation system",
+        "created": "2026-07-31 08:39:29.812455"
+    },
+    "requirements": {
+        "raw_request": "Improve CAD generation system",
+        "engineering_requirements": {
+            "geometry": "parametric",
+            "manufacturing": "3d_printing",
+            "validation": true,
+            "cost_analysis": true
+        },
+        "status": "READY_FOR_ENGINEERING"
+    },
+    "geometry": {
+        "parameters": {},
+        "volume_mm3": null,
+        "mass_grams": null
+    },
+    "material": {
+        "name": null,
+        "strength": null,
+        "temperature_limit": null
+    },
+    "manufacturing": {
+        "process": null,
+        "printer": null,
+        "print_time_hours": null,
+        "cost": null
+    },
+    "validation": {
+        "stress": null,
+        "thermal": null,
+        "tolerance": null
+    },
+    "decisions": [],
+    "history": []
+}
