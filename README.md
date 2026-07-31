@@ -1,109 +1,100 @@
 # MyEngineer
 
-## AI Engineering Agent
+# AI Product Development Studio
 
-**From idea to manufactured object.**
+**Idea → Design → Engineering → CAD → Manufacturing**
 
-MyEngineer is an AI engineering platform designed to transform ideas into real physical products.
+MyEngineer is an AI-powered product development platform that helps transform industrial ideas into manufacturable products.
 
-The system combines research, engineering analysis, CAD generation and manufacturing preparation into one workflow.
+## Vision
 
-## Mission
+Create an engineering intelligence system combining:
 
-Create an autonomous engineering assistant that helps designers, inventors and manufacturers move from concept to production faster.
+- product research
+- industrial design intelligence
+- engineering reasoning
+- CAD workflow preparation
+- manufacturing planning
+- knowledge memory
 
-## Core Capabilities
-
-- Analyze product ideas and technical requirements
-- Research existing solutions and analogues
-- Search patents and engineering knowledge
-- Select components and materials
-- Generate engineering concepts
-- Prepare CAD workflows
-- Create manufacturing documentation
-- Prepare STEP / STL / DXF / PDF outputs
-
-## Engineering Workflow
+## Product Workflow
 
 ```
 IDEA
-  ↓
+ ↓
+Product Brief Generator
+ ↓
 Research Agent
-  ↓
+ ↓
+Industrial Design Agent
+ ↓
 Engineering Agent
-  ↓
-Supply Chain Agent
-  ↓
+ ↓
 CAD Agent
-  ↓
+ ↓
 Manufacturing Agent
-  ↓
-PHYSICAL OBJECT
+ ↓
+PHYSICAL PRODUCT
 ```
 
-## MVP Demonstrator
+## MVP
 
-First engineering case:
+First milestone: **Product Brief Generator**
 
-**Mobile RO System for High Rise Cleaning**
+Input:
+```
+Create a professional facade cleaning system
+```
 
-The project demonstrates the complete pipeline:
+Output:
+```
+Product category
+Design direction
+Materials
+Manufacturing approach
+Engineering next steps
+```
 
-- market research
-- competitor analysis
-- patents
-- engineering calculations
-- component selection
-- CAD structure
-- manufacturing plan
-
-## Technology Direction
+## Architecture
 
 ```
-Frontend
-  Next.js
-
-Backend
-  Python FastAPI
-
-AI Layer
-  LLM Agents
-
-Knowledge Base
-  Vector Database
-
-CAD
-  FreeCAD API / OpenCascade
-
-Formats
-  STEP STL DXF PDF
+frontend/        Web Application
+backend/         API and services
+agents/          AI engineering agents
+knowledge/       Engineering memory
+database/        Vector memory and graph
 ```
+
+## Industrial Design Intelligence
+
+The unique layer of MyEngineer:
+
+- Apple Minimal
+- Tesla Future
+- German Industrial
+- Russian Future Heritage
 
 ## Roadmap
 
-### v0.1 — Foundation
+### Sprint 1
 
-- Project architecture
-- Engineering workflow documentation
-- Core agent concept
+- Repository refactor
+- Product Brief Generator
+- Web MVP skeleton
+- Agent architecture
 
-### v0.2 — Research Agent
+### Sprint 2
 
-- Technical research
-- Analog discovery
-- Patent analysis
+- Research Agent
+- Design Agent
+- Engineering Agent
 
-### v0.3 — Engineering Agent
+### Sprint 3
 
-- Requirements
-- Component selection
-- Engineering reports
-
-### v0.4 — CAD & Manufacturing
-
-- CAD automation
-- Production documentation
+- Knowledge Graph
+- CAD workflow
+- Manufacturing pipeline
 
 ## Status
 
-🚧 Building MyEngineer Core Agent.
+🚧 MyEngineer Refactor v2.0 in progress.
