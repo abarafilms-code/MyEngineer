@@ -6,6 +6,7 @@ from app.decision.engine import DecisionEngine
 from app.agents.engineer import EngineerAgent
 from app.agents.cad import CADAgent
 from app.agents.manufacturing import ManufacturingAgent
+from app.agents.design_review import DesignReviewAgent
 from app.cost import CostEstimator
 
 
@@ -22,9 +23,9 @@ class AgentPipeline:
             EngineerAgent(),
             CADAgent(),
             ManufacturingAgent(),
+            DesignReviewAgent(),
             CostEstimator()
         ]
-
 
     def run(self, idea: str):
 
