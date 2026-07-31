@@ -18,6 +18,10 @@ class AgentManager:
 
         context = {
             "task": task,
+            "files": [],
+            "plan": [],
+            "changes": [],
+            "knowledge": {},
             "results": {}
         }
 
@@ -30,8 +34,15 @@ class AgentManager:
 
 
             result = agent.run(
-                context["task"]
+                context
             )
+
+
+            if isinstance(result, dict):
+
+                context.update(
+                    result
+                )
 
 
             context["results"][agent.name] = result

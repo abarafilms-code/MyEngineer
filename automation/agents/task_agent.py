@@ -5,58 +5,36 @@ class TaskAgent:
 
     def run(self, context):
 
-        task = context.lower()
+        task = context.get(
+            "task",
+            ""
+        )
 
 
-        requirements = {
-            "product": None,
-            "materials": [],
-            "features": [],
-            "manufacturing": []
+        task_lower = task.lower()
+
+
+        context["task_analysis"] = {
+            "original": task,
+            "type": "engineering",
+            "keywords": []
         }
 
 
-        if "maestro" in task:
-            requirements["product"] = "Maestro Solo component"
+        keywords = []
 
 
-        if "корпус" in task or "enclosure" in task:
-            requirements["features"].append(
-                "protective enclosure"
-            )
+        if "cad" in task_lower:
+            keywords.append("cad")
+
+        if "geometry" in task_lower:
+            keywords.append("geometry")
+
+        if "print" in task_lower:
+            keywords.append("3d_printing")
 
 
-        materials = [
-            "pla",
-            "petg",
-            "abs",
-            "asa",
-            "nylon",
-            "peek"
-        ]
+        context["task_analysis"]["keywords"] = keywords
 
 
-        for material in materials:
-
-            if material in task:
-
-                requirements["materials"].append(
-                    material.upper()
-                )
-
-
-        if "вентиля" in task or "ventilation" in task:
-
-            requirements["features"].append(
-                "ventilation system"
-            )
-
-
-        if "креп" in task or "mount" in task:
-
-            requirements["features"].append(
-                "mounting points"
-            )
-
-
-        return requirements
+        return context

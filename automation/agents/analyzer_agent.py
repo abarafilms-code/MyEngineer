@@ -6,32 +6,51 @@ class AnalyzerAgent:
     name = "analyzer_agent"
 
 
-    def run(self, path="."):
+    def run(self, context):
+
+        path = "."
+
 
         files = []
 
+
         for root, dirs, filenames in os.walk(path):
 
-            # пропускаем служебные папки
             dirs[:] = [
                 d for d in dirs
                 if d not in [
                     ".git",
                     "__pycache__",
-                    ".pytest_cache"
+                    ".pytest_cache",
+                    ".venv"
                 ]
             ]
+
 
             for filename in filenames:
 
                 if filename.endswith(".py"):
 
                     files.append(
-                        os.path.join(root, filename)
+                        os.path.join(
+                            root,
+                            filename
+                        )
                     )
 
 
-        return {
-            "files": files,
-            "count": len(files)
+        context["files"] = files
+
+
+        context["analysis"] = {
+            "python_files": len(files),
+            "project_type": "python"
         }
+
+
+        print(
+            f"Analyzed files: {len(files)}"
+        )
+
+
+        return context

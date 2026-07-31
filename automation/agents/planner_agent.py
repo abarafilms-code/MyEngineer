@@ -2,13 +2,23 @@ class PlannerAgent:
 
     name = "planner_agent"
 
-    def run(self, task):
 
-        steps = []
+    def run(self, context):
+
+        task = context.get(
+            "task",
+            ""
+        )
+
 
         task_lower = task.lower()
 
+
+        steps = []
+
+
         if "cad" in task_lower or "geometry" in task_lower:
+
             steps.extend([
                 "Analyze current CAD architecture",
                 "Improve geometry generation modules",
@@ -17,6 +27,7 @@ class PlannerAgent:
             ])
 
         else:
+
             steps.extend([
                 "Analyze task requirements",
                 "Identify required files",
@@ -24,7 +35,16 @@ class PlannerAgent:
                 "Run tests"
             ])
 
-        return {
-            "task": task,
-            "plan": steps
-        }
+
+        context["plan"] = steps
+
+
+        print("\nDevelopment plan:")
+
+        for step in steps:
+            print(
+                "- " + step
+            )
+
+
+        return context
