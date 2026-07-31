@@ -1,0 +1,21 @@
+{
+    "cad": {
+        "model": {
+            "type": "box",
+            "width": 100,
+            "height": 50,
+            "depth": 20
+        },
+        "valid": true
+    },
+    "material": {
+        "name": "PETG",
+        "reason": "selected by engineering rules"
+    },
+    "manufacturing": {
+        "print_time_hours": 4,
+        "mass_grams": 120,
+        "material": "PETG",
+        "estimated_cost": 8.5
+    }
+}
