@@ -1,3 +1,4 @@
+from automation.agents.planner_agent import PlannerAgent
 from automation.agents.test_agent import TestAgent
 from automation.agents.reviewer_agent import ReviewerAgent
 from automation.agents.github_agent import GithubAgent
@@ -6,14 +7,26 @@ from automation.agents.github_agent import GithubAgent
 class DevelopmentLoop:
 
     def __init__(self):
+        self.planner = PlannerAgent()
         self.test = TestAgent()
         self.review = ReviewerAgent()
         self.github = GithubAgent()
 
 
-    def execute(self):
+    def execute(self, task="Improve CAD generation system"):
 
-        print("Running tests...")
+        print("\nPlanning task:")
+        print(task)
+
+        plan = self.planner.run(task)
+
+        print("\nDevelopment plan:")
+
+        for step in plan["plan"]:
+            print("-", step)
+
+
+        print("\nRunning tests...")
 
         test_result = self.test.run()
 
@@ -41,18 +54,15 @@ class DevelopmentLoop:
         print("Review approved")
 
 
-        commit_result = self.github.commit(
-            "feat: autonomous development cycle"
+        self.github.commit(
+            "feat: execute planned development cycle"
         )
 
+        self.github.push()
 
-        if commit_result["committed"]:
-            print("Changes committed")
-            self.github.push()
-            print("Changes pushed")
-        else:
-            print("No changes to commit")
+        print("Changes pushed")
 
 
 if __name__ == "__main__":
+
     DevelopmentLoop().execute()
