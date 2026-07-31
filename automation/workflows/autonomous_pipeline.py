@@ -1,4 +1,5 @@
 from automation.core.agent_manager import AgentManager
+from automation.orchestration.agent_router import AgentRouter
 
 from automation.agents.task_agent import TaskAgent
 from automation.agents.analyzer_agent import AnalyzerAgent
@@ -57,6 +58,7 @@ class AutonomousPipeline:
     def __init__(self):
 
         self.manager = AgentManager()
+        self.router = AgentRouter()
 
 
         self.manager.register(
@@ -228,9 +230,18 @@ class AutonomousPipeline:
             "task": task
         }
 
+        route = self.router.route(task)
 
-        result = self.manager.run(
-            context
+        context["execution_route"] = route
+
+        print(
+            "Agent Router:",
+            route
+        )
+
+        result = self.manager.run_route(
+            context,
+            route
         )
 
 
