@@ -29,6 +29,8 @@ from automation.agents.geometry_optimizer_agent import GeometryOptimizerAgent
 from automation.agents.failure_memory_agent import FailureMemoryAgent
 from automation.agents.cad_memory_agent import CADMemoryAgent
 from automation.agents.engineering_brain_agent import EngineeringBrainAgent
+from automation.agents.failure_analyzer_agent import FailureAnalyzerAgent
+from automation.agents.self_learning_agent import SelfLearningAgent
 
 from automation.agents.architect_agent import ArchitectAgent
 from automation.agents.material_agent import MaterialAgent
@@ -165,6 +167,14 @@ class AutonomousPipeline:
 
         self.manager.register(
             EngineeringBrainAgent()
+        )
+
+        self.manager.register(
+            FailureAnalyzerAgent()
+        )
+
+        self.manager.register(
+            SelfLearningAgent()
         )
 
         self.manager.register(

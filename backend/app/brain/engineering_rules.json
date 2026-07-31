@@ -23,6 +23,16 @@
             "action": "improve_support_strategy",
             "parameter": "supports",
             "value": "optimized"
+        },
+        {
+            "condition": "stress_failure",
+            "action": "increase_wall_thickness",
+            "value": 2
+        },
+        {
+            "condition": "thermal_failure",
+            "action": "change_material",
+            "value": "ASA"
         }
     ]
 }

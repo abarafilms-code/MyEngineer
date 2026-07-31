@@ -31,6 +31,8 @@ class DecisionEngine:
                 "geometry_agent",
                 "cad_memory_agent",
                 "engineering_brain_agent",
+                "failure_analyzer_agent",
+                "self_learning_agent",
                 "manufacturing_agent"
             ]
 
