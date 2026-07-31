@@ -4,6 +4,7 @@ from automation.agents.coder_agent import CoderAgent
 from automation.agents.test_agent import TestAgent
 from automation.agents.reviewer_agent import ReviewerAgent
 from automation.agents.github_agent import GithubAgent
+from automation.agents.memory_agent import MemoryAgent
 
 
 class DevelopmentLoop:
@@ -15,6 +16,7 @@ class DevelopmentLoop:
         self.test = TestAgent()
         self.review = ReviewerAgent()
         self.github = GithubAgent()
+        self.memory = MemoryAgent()
 
 
     def execute(self, task="Improve CAD generation system"):
@@ -73,6 +75,17 @@ class DevelopmentLoop:
 
         print("Review approved")
 
+
+        self.memory.run(
+            task,
+            {
+                "files": code_result["files"],
+                "tests": "passed",
+                "review": "approved"
+            }
+        )
+
+        print("Memory saved")
 
         self.github.commit(
             "feat: add analyzer agent cycle"
