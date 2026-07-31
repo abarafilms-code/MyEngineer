@@ -44,5 +44,156 @@
         },
         "validation": null,
         "rules_used": []
+    },
+    {
+        "timestamp": "2026-07-31 09:38:04.628002",
+        "task": "Improve CAD generation system",
+        "material": {
+            "name": "PETG",
+            "reason": "selected by engineering rules"
+        },
+        "geometry": {
+            "modules": [
+                "backend/app/cad_engine/constraints.py",
+                "backend/app/cad_engine/__init__.py",
+                "backend/app/cad_engine/parameters.py",
+                "backend/app/cad_engine/templates.py",
+                "backend/app/cad_engine/generator.py",
+                "backend/app/cad_engine/geometry/enclosure.py",
+                "backend/app/cad_engine/geometry/assembly.py",
+                "backend/app/cad_engine/geometry/geometry_validator.py",
+                "backend/app/cad_engine/geometry/__init__.py",
+                "backend/app/cad_engine/geometry/solid.py",
+                "backend/app/cad_engine/geometry/mounting.py",
+                "backend/app/cad_engine/geometry/ventilation.py",
+                "backend/app/cad_engine/geometry/improvements.py",
+                "backend/app/cad_engine/generated/parametric_part.py",
+                "backend/app/cad_engine/kernel/cad_kernel.py",
+                "backend/app/cad_engine/intelligence/dimensions.py",
+                "backend/app/cad_engine/intelligence/analyzer.py",
+                "backend/app/cad_engine/intelligence/export.py",
+                "backend/app/cad_engine/intelligence/__init__.py",
+                "backend/app/cad_engine/intelligence/materials.py"
+            ],
+            "count": 20,
+            "recommendations": [
+                "add geometry validation",
+                "add parametric constraints",
+                "add solid verification",
+                "add mesh quality checks"
+            ]
+        },
+        "decision": {
+            "status": "APPROVED",
+            "action": "continue",
+            "reason": "All validation checks passed"
+        },
+        "validation": null,
+        "rules_used": []
+    },
+    {
+        "timestamp": "2026-07-31 09:39:06.010348",
+        "task": "Improve CAD generation system",
+        "material": {
+            "name": "PETG",
+            "reason": "selected by engineering rules"
+        },
+        "geometry": {
+            "modules": [
+                "backend/app/cad_engine/constraints.py",
+                "backend/app/cad_engine/__init__.py",
+                "backend/app/cad_engine/parameters.py",
+                "backend/app/cad_engine/templates.py",
+                "backend/app/cad_engine/generator.py",
+                "backend/app/cad_engine/geometry/enclosure.py",
+                "backend/app/cad_engine/geometry/assembly.py",
+                "backend/app/cad_engine/geometry/geometry_validator.py",
+                "backend/app/cad_engine/geometry/__init__.py",
+                "backend/app/cad_engine/geometry/solid.py",
+                "backend/app/cad_engine/geometry/mounting.py",
+                "backend/app/cad_engine/geometry/ventilation.py",
+                "backend/app/cad_engine/geometry/improvements.py",
+                "backend/app/cad_engine/generated/parametric_part.py",
+                "backend/app/cad_engine/kernel/cad_kernel.py",
+                "backend/app/cad_engine/intelligence/dimensions.py",
+                "backend/app/cad_engine/intelligence/analyzer.py",
+                "backend/app/cad_engine/intelligence/export.py",
+                "backend/app/cad_engine/intelligence/__init__.py",
+                "backend/app/cad_engine/intelligence/materials.py"
+            ],
+            "count": 20,
+            "recommendations": [
+                "add geometry validation",
+                "add parametric constraints",
+                "add solid verification",
+                "add mesh quality checks"
+            ]
+        },
+        "decision": {
+            "status": "APPROVED",
+            "action": "continue",
+            "reason": "All validation checks passed"
+        },
+        "validation": null,
+        "rules_used": []
+    },
+    {
+        "timestamp": "2026-07-31 09:41:21.834398",
+        "task": "Improve CAD generation system",
+        "material": {
+            "name": "PETG",
+            "reason": "selected by engineering rules"
+        },
+        "geometry": {
+            "modules": [
+                "backend/app/cad_engine/constraints.py",
+                "backend/app/cad_engine/__init__.py",
+                "backend/app/cad_engine/parameters.py",
+                "backend/app/cad_engine/templates.py",
+                "backend/app/cad_engine/generator.py",
+                "backend/app/cad_engine/geometry/enclosure.py",
+                "backend/app/cad_engine/geometry/assembly.py",
+                "backend/app/cad_engine/geometry/geometry_validator.py",
+                "backend/app/cad_engine/geometry/__init__.py",
+                "backend/app/cad_engine/geometry/solid.py",
+                "backend/app/cad_engine/geometry/mounting.py",
+                "backend/app/cad_engine/geometry/ventilation.py",
+                "backend/app/cad_engine/geometry/improvements.py",
+                "backend/app/cad_engine/generated/parametric_part.py",
+                "backend/app/cad_engine/kernel/cad_kernel.py",
+                "backend/app/cad_engine/intelligence/dimensions.py",
+                "backend/app/cad_engine/intelligence/analyzer.py",
+                "backend/app/cad_engine/intelligence/export.py",
+                "backend/app/cad_engine/intelligence/__init__.py",
+                "backend/app/cad_engine/intelligence/materials.py"
+            ],
+            "count": 20,
+            "recommendations": [
+                "add geometry validation",
+                "add parametric constraints",
+                "add solid verification",
+                "add mesh quality checks"
+            ]
+        },
+        "decision": {
+            "status": "APPROVED",
+            "action": "continue",
+            "reason": "All validation checks passed"
+        },
+        "validation": null,
+        "rules_used": [
+            {
+                "condition": "low_safety_factor",
+                "action": "increase_wall_thickness",
+                "parameter": "wall_thickness_mm",
+                "value": 1
+            },
+            {
+                "condition": "thermal_limit_close",
+                "action": "change_material",
+                "parameter": "material",
+                "value": "ASA"
+            }
+        ]
     }
 ]

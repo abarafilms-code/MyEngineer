@@ -4,6 +4,7 @@ from pathlib import Path
 
 class EngineeringRuleEngine:
 
+
     def __init__(self):
 
         self.path = Path(
@@ -35,29 +36,89 @@ class EngineeringRuleEngine:
         )
 
 
-    def apply_rules(
-        self,
-        context
-    ):
+    def apply_rules(self, context):
 
         rules = self.load_rules()
 
         applied = []
 
-        material = context.get(
-            "material"
+
+        validation = context.get(
+            "validation",
+            {}
+        )
+
+
+        stress = validation.get(
+            "stress",
+            {}
+        )
+
+
+        thermal = validation.get(
+            "thermal",
+            {}
+        )
+
+
+        safety_factor = stress.get(
+            "safety_factor",
+            0
+        )
+
+
+        deformation = stress.get(
+            "deformation_mm",
+            0
+        )
+
+
+        thermal_margin = thermal.get(
+            "thermal_margin",
+            0
         )
 
 
         for rule in rules:
 
-            if rule.get(
-                "material"
-            ) == material:
 
-                applied.append(
-                    rule
-                )
+            condition = rule.get(
+                "condition"
+            )
+
+
+            if condition == "low_safety_factor":
+
+                if safety_factor < 2:
+
+                    applied.append(rule)
+
+
+
+            elif condition == "high_deformation":
+
+                if deformation > 0.5:
+
+                    applied.append(rule)
+
+
+
+            elif condition == "thermal_limit_close":
+
+                if thermal_margin < 10:
+
+                    applied.append(rule)
+
+
+
+            elif condition == "print_failure":
+
+                if context.get(
+                    "manufacturing_failure"
+                ):
+
+                    applied.append(rule)
+
 
 
         context[
@@ -65,7 +126,16 @@ class EngineeringRuleEngine:
         ] = applied
 
 
+        context[
+            "engineering_actions"
+        ] = [
+            r.get("action")
+            for r in applied
+        ]
+
+
         return context
+
 
 
     def add_rule(
