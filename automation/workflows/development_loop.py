@@ -1,4 +1,5 @@
 from automation.agents.planner_agent import PlannerAgent
+from automation.agents.coder_agent import CoderAgent
 from automation.agents.test_agent import TestAgent
 from automation.agents.reviewer_agent import ReviewerAgent
 from automation.agents.github_agent import GithubAgent
@@ -8,6 +9,7 @@ class DevelopmentLoop:
 
     def __init__(self):
         self.planner = PlannerAgent()
+        self.coder = CoderAgent()
         self.test = TestAgent()
         self.review = ReviewerAgent()
         self.github = GithubAgent()
@@ -20,10 +22,27 @@ class DevelopmentLoop:
 
         plan = self.planner.run(task)
 
-        print("\nDevelopment plan:")
 
+        print("\nDevelopment plan:")
         for step in plan["plan"]:
             print("-", step)
+
+
+        print("\nCoding...")
+
+        code_result = self.coder.run(
+            plan["plan"]
+        )
+
+
+        if not code_result["success"]:
+            raise Exception("Coder failed")
+
+
+        print("Created files:")
+
+        for file in code_result["files"]:
+            print("-", file)
 
 
         print("\nRunning tests...")
@@ -55,7 +74,7 @@ class DevelopmentLoop:
 
 
         self.github.commit(
-            "feat: execute planned development cycle"
+            "feat: add coder agent development cycle"
         )
 
         self.github.push()
@@ -64,5 +83,4 @@ class DevelopmentLoop:
 
 
 if __name__ == "__main__":
-
     DevelopmentLoop().execute()
