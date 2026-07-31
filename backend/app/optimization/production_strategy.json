@@ -1,0 +1,10 @@
+{
+    "strategy": "AI_OPTIMIZED_FACTORY",
+    "targets": [
+        "capacity",
+        "cost",
+        "energy",
+        "profit"
+    ],
+    "status": "ACTIVE"
+}
