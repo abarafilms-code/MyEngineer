@@ -44,6 +44,7 @@ from automation.agents.orchestrator_v2_agent import OrchestratorV2Agent
 from automation.agents.digital_twin_agent import DigitalTwinAgent
 from automation.agents.predictive_maintenance_agent import PredictiveMaintenanceAgent
 from automation.agents.production_optimizer_agent import ProductionOptimizerAgent
+from automation.agents.factory_manager_agent import FactoryManagerAgent
 
 
 
@@ -193,6 +194,10 @@ class AutonomousPipeline:
 
         self.manager.register(
             ProductionOptimizerAgent()
+        )
+
+        self.manager.register(
+            FactoryManagerAgent()
         )
 
 
