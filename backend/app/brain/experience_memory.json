@@ -36,5 +36,30 @@
             }
         ],
         "timestamp": "2026-07-31 09:58:30.912389"
+    },
+    {
+        "task": "Improve CAD generation system",
+        "failures": [
+            "stress_failure",
+            "thermal_failure"
+        ],
+        "material": {
+            "name": "PETG",
+            "reason": "selected by engineering rules"
+        },
+        "result": "analyzed",
+        "generated_rules": [
+            {
+                "condition": "stress_failure",
+                "action": "increase_wall_thickness",
+                "value": 2
+            },
+            {
+                "condition": "thermal_failure",
+                "action": "change_material",
+                "value": "ASA"
+            }
+        ],
+        "timestamp": "2026-07-31 10:01:39.771787"
     }
 ]
