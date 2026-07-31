@@ -1,17 +1,21 @@
-
-
 class ReviewerAgent:
 
     name = "reviewer_agent"
 
-    def run(self, changes):
+
+    def run(self, context):
 
         issues = []
 
-        if "TODO" in changes:
+
+        text = str(context)
+
+
+        if "TODO" in text:
             issues.append(
                 "Found unfinished TODO items"
             )
+
 
         return {
             "approved": len(issues) == 0,

@@ -1,5 +1,4 @@
-
-from automation.workflows.development_loop import DevelopmentLoop
+from automation.workflows.autonomous_pipeline import AutonomousPipeline
 
 
 class AutonomousController:
@@ -10,7 +9,7 @@ class AutonomousController:
 
     def __init__(self):
 
-        self.loop = DevelopmentLoop()
+        self.pipeline = AutonomousPipeline()
 
 
 
@@ -21,25 +20,23 @@ class AutonomousController:
         )
 
 
-        result = {
+        result = self.pipeline.run(
+            task
+        )
+
+
+        return {
             "task": task,
-            "status": "started"
+            "status": "completed",
+            "result": result
         }
-
-
-        self.loop.execute()
-
-
-        result["status"] = "completed"
-
-
-        return result
 
 
 
 if __name__ == "__main__":
 
     controller = AutonomousController()
+
 
     controller.execute(
         "Improve CAD generation system"

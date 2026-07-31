@@ -14,19 +14,27 @@ class AgentManager:
         self.pipeline.append(agent)
 
 
-    def run(self, context):
+    def run(self, task):
 
-        results = {}
+        context = {
+            "task": task,
+            "results": {}
+        }
+
 
         for agent in self.pipeline:
 
-            print(f"\nRunning {agent.name}...")
-
-            result = agent.run(context)
-
-            results[agent.name] = result
-
-            context = result
+            print(
+                f"\nRunning {agent.name}..."
+            )
 
 
-        return results
+            result = agent.run(
+                context["task"]
+            )
+
+
+            context["results"][agent.name] = result
+
+
+        return context

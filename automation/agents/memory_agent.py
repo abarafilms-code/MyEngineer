@@ -7,30 +7,36 @@ class MemoryAgent:
 
     name = "memory_agent"
 
+
     memory_file = "automation/memory/history.json"
 
 
-    def load(self):
+    def run(self, context):
 
-        if not os.path.exists(self.memory_file):
-            return []
+        record = {
+            "date": datetime.now().isoformat(),
+            "task": context
+        }
 
-        with open(self.memory_file, "r") as f:
-            return json.load(f)
-
-
-    def save(self, record):
-
-        history = self.load()
-
-        history.append(record)
 
         os.makedirs(
             os.path.dirname(self.memory_file),
             exist_ok=True
         )
 
-        with open(self.memory_file, "w") as f:
+
+        history = []
+
+        if os.path.exists(self.memory_file):
+
+            with open(self.memory_file) as f:
+                history = json.load(f)
+
+
+        history.append(record)
+
+
+        with open(self.memory_file,"w") as f:
             json.dump(
                 history,
                 f,
@@ -38,14 +44,6 @@ class MemoryAgent:
             )
 
 
-    def run(self, task, result):
-
-        record = {
-            "date": datetime.now().isoformat(),
-            "task": task,
-            "result": result
+        return {
+            "saved": True
         }
-
-        self.save(record)
-
-        return record

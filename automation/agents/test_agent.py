@@ -5,13 +5,15 @@ class TestAgent:
 
     name = "test_agent"
 
-    def run(self):
+
+    def run(self, context):
 
         result = subprocess.run(
             ["pytest"],
             capture_output=True,
             text=True
         )
+
 
         return {
             "success": result.returncode == 0,
