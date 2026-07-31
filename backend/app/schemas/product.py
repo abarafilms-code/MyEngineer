@@ -1,6 +1,5 @@
-from dataclasses import dataclass
+from pydantic import BaseModel
 
 
-@dataclass
-class ProductBriefRequest:
+class ProductBriefRequest(BaseModel):
     idea: str
