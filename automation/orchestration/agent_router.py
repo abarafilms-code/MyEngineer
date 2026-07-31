@@ -8,7 +8,7 @@ class AgentRouter:
         self.workflow.build_cad_workflow()
 
 
-    def route(self, task):
+    def route(self, task, decision=None):
 
         task = task.lower()
 
@@ -39,6 +39,10 @@ class AgentRouter:
                 "sales_agent",
                 "order_to_factory_agent"
             ]
+
+        if decision and decision.get("agents"):
+            return decision["agents"]
+
 
         if "cad" in task or "design" in task:
             return self.workflow.resolve(

@@ -1,4 +1,5 @@
 from automation.core.agent_manager import AgentManager
+from backend.app.decision.decision_engine import DecisionEngine
 from automation.orchestration.agent_router import AgentRouter
 
 from automation.agents.task_agent import TaskAgent
@@ -58,6 +59,7 @@ class AutonomousPipeline:
     def __init__(self):
 
         self.manager = AgentManager()
+        self.decision_engine = DecisionEngine()
         self.router = AgentRouter()
 
 
@@ -230,7 +232,14 @@ class AutonomousPipeline:
             "task": task
         }
 
-        route = self.router.route(task)
+        decision = self.decision_engine.analyze(task)
+
+        print(
+            "Decision Engine:",
+            decision
+        )
+
+        route = self.router.route(task, decision)
 
         context["execution_route"] = route
 
