@@ -2,11 +2,10 @@ class ResearcherAgent:
 
     name = "researcher"
 
-    def run(self, idea: str):
+    def run(self, project):
+
         return {
-            "research": f"Technology research for: {idea}",
             "materials": [
-                "PLA",
                 "PETG",
                 "ABS",
                 "ASA",

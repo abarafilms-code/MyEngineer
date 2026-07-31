@@ -2,20 +2,13 @@ class EngineerAgent:
 
     name = "engineer"
 
-    def run(self, idea: str):
+    def run(self, project):
 
         return {
-            "engineering": {
-                "mechanics": [
-                    "load analysis",
-                    "assembly design",
-                    "fasteners"
-                ],
-                "requirements": [
-                    "dimensions",
-                    "tolerance",
-                    "strength"
-                ],
-                "idea": idea
-            }
+            "requirements": [
+                "mechanical design",
+                "dimensions",
+                "assembly concept",
+                "strength calculation"
+            ]
         }

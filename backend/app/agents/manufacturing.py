@@ -2,20 +2,12 @@ class ManufacturingAgent:
 
     name = "manufacturing"
 
-    def run(self, idea: str):
+    def run(self, project):
 
         return {
-            "manufacturing": {
-                "technology": "Additive manufacturing",
-                "process": [
-                    "prototype",
-                    "testing",
-                    "small batch production"
-                ],
-                "materials": [
-                    "PETG",
-                    "ABS",
-                    "ASA"
-                ]
-            }
+            "process": [
+                "prototype",
+                "testing",
+                "small batch production"
+            ]
         }
