@@ -6,16 +6,21 @@ from app.decision.engine import DecisionEngine
 from app.agents.engineer import EngineerAgent
 from app.agents.cad import CADAgent
 from app.agents.manufacturing import ManufacturingAgent
-from app.agents.design_review import DesignReviewAgent
 from app.cost import CostEstimator
-from app.cad_engine import CADGenerator
+
 from app.cad_engine.intelligence.analyzer import CADAnalyzer
 from app.cad_engine.intelligence.dimensions import DimensionEngine
+from app.cad_engine.geometry.enclosure import EnclosureGenerator
+from app.cad_engine.geometry.mounting import MountingGenerator
 
 
 class AgentPipeline:
 
     def __init__(self):
+
+        self.dimension_engine = DimensionEngine()
+        self.enclosure_generator = EnclosureGenerator()
+        self.mounting_generator = MountingGenerator()
 
         self.agents = [
             ProductManagerAgent(),
@@ -26,12 +31,10 @@ class AgentPipeline:
             EngineerAgent(),
             CADAgent(),
             ManufacturingAgent(),
-            DesignReviewAgent(),
             CostEstimator(),
-            CADGenerator(),
-            CADAnalyzer(),
-            DimensionEngine()
+            CADAnalyzer()
         ]
+
 
     def run(self, idea: str):
 
@@ -41,5 +44,15 @@ class AgentPipeline:
 
         for agent in self.agents:
             result[agent.name] = agent.run(idea)
+
+        dimensions = self.dimension_engine.run(idea)
+
+        result["dimension_engine"] = dimensions
+
+        result["enclosure_generator"] = self.enclosure_generator.run(
+            dimensions["enclosure"]
+        )
+
+        result["mounting_generator"] = self.mounting_generator.run(idea)
 
         return result
