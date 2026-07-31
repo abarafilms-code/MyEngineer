@@ -1,5 +1,6 @@
 from automation.core.agent_manager import AgentManager
 
+from automation.agents.task_agent import TaskAgent
 from automation.agents.analyzer_agent import AnalyzerAgent
 from automation.agents.planner_agent import PlannerAgent
 from automation.agents.coder_agent import CoderAgent
@@ -14,6 +15,10 @@ class AutonomousPipeline:
     def __init__(self):
 
         self.manager = AgentManager()
+
+        self.manager.register(
+            TaskAgent()
+        )
 
         self.manager.register(
             AnalyzerAgent()
