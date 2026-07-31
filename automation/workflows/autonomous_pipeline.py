@@ -11,6 +11,11 @@ from automation.agents.cad_engineer_agent import CADEngineerAgent
 from automation.agents.geometry_agent import GeometryAgent
 from automation.agents.cad_generator_agent import CADGeneratorAgent
 from automation.agents.cad_kernel_agent import CADKernelAgent
+
+from automation.agents.stress_analysis_agent import StressAnalysisAgent
+from automation.agents.thermal_analysis_agent import ThermalAnalysisAgent
+from automation.agents.tolerance_agent import ToleranceAgent
+
 from automation.agents.requirements_agent import RequirementsAgent
 from automation.agents.design_review_agent import DesignReviewAgent
 from automation.agents.failure_prediction_agent import FailurePredictionAgent
@@ -35,6 +40,7 @@ from automation.agents.test_agent import TestAgent
 from automation.agents.reviewer_agent import ReviewerAgent
 from automation.agents.knowledge_agent import KnowledgeAgent
 from automation.agents.memory_agent import MemoryAgent
+from automation.agents.orchestrator_v2_agent import OrchestratorV2Agent
 
 
 
@@ -80,6 +86,34 @@ class AutonomousPipeline:
 
         self.manager.register(
             CADKernelAgent()
+        )
+
+        self.manager.register(
+            RequirementsAgent()
+        )
+
+        self.manager.register(
+            ArchitectAgent()
+        )
+
+        self.manager.register(
+            DesignReviewAgent()
+        )
+
+        self.manager.register(
+            FailurePredictionAgent()
+        )
+
+        self.manager.register(
+            StressAnalysisAgent()
+        )
+
+        self.manager.register(
+            ThermalAnalysisAgent()
+        )
+
+        self.manager.register(
+            ToleranceAgent()
         )
 
         self.manager.register(
@@ -140,6 +174,10 @@ class AutonomousPipeline:
 
         self.manager.register(
             MemoryAgent()
+        )
+
+        self.manager.register(
+            OrchestratorV2Agent()
         )
 
 
