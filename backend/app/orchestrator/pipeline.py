@@ -1,3 +1,5 @@
+from app.schemas.project import EngineeringProject
+
 from app.agents.planner import PlannerAgent
 from app.agents.researcher import ResearcherAgent
 from app.agents.engineer import EngineerAgent
@@ -9,25 +11,59 @@ class AgentPipeline:
 
     def __init__(self):
 
-        self.agents = [
-            PlannerAgent(),
-            ResearcherAgent(),
-            EngineerAgent(),
-            CADAgent(),
-            ManufacturingAgent()
-        ]
+        self.planner = PlannerAgent()
+        self.researcher = ResearcherAgent()
+        self.engineer = EngineerAgent()
+        self.cad = CADAgent()
+        self.manufacturing = ManufacturingAgent()
 
 
     def run(self, idea: str):
 
-        result = {
-            "product": idea,
-            "status": "analysis complete"
-        }
+        project = EngineeringProject(
+            idea=idea
+        )
 
 
-        for agent in self.agents:
-            result[agent.name] = agent.run(idea)
+        project.requirements = (
+            self.planner.run(project)
+        )
 
 
-        return result
+        research = (
+            self.researcher.run(project)
+        )
+
+        project.materials = (
+            research.get("materials", [])
+        )
+
+
+        engineering = (
+            self.engineer.run(project)
+        )
+
+        project.requirements.extend(
+            engineering.get("requirements", [])
+        )
+
+
+        cad = (
+            self.cad.run(project)
+        )
+
+        project.cad_formats = (
+            cad.get("formats", [])
+        )
+
+
+        manufacturing = (
+            self.manufacturing.run(project)
+        )
+
+        project.manufacturing_methods = (
+            manufacturing.get("process", [])
+        )
+
+
+        return project.model_dump()
