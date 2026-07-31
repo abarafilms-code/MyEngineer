@@ -22,6 +22,7 @@ from automation.agents.printer_farm_agent import PrinterFarmAgent
 from automation.agents.quality_control_agent import QualityControlAgent
 from automation.agents.market_intelligence_agent import MarketIntelligenceAgent
 from automation.agents.customer_agent import CustomerAgent
+from automation.agents.ceo_agent import CEOAgent
 from automation.agents.simulation_agent import SimulationAgent
 from automation.agents.test_agent import TestAgent
 from automation.agents.reviewer_agent import ReviewerAgent
