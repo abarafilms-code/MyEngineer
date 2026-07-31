@@ -24,6 +24,7 @@ from automation.agents.market_intelligence_agent import MarketIntelligenceAgent
 from automation.agents.customer_agent import CustomerAgent
 from automation.agents.ceo_agent import CEOAgent
 from automation.agents.learning_loop_agent import LearningLoopAgent
+from automation.agents.rd_agent import RDAgent
 from automation.agents.simulation_agent import SimulationAgent
 from automation.agents.test_agent import TestAgent
 from automation.agents.reviewer_agent import ReviewerAgent
