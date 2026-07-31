@@ -100,6 +100,9 @@ class EngineeringContext:
             "material":
                 self.data["material"]["name"],
 
+            "manufacturing":
+                self.data["manufacturing"],
+
             "validation":
                 self.data["validation"]
 

@@ -1,7 +1,7 @@
 {
     "project": {
         "task": "Improve CAD generation system",
-        "created": "2026-07-31 08:45:41.691594"
+        "created": "2026-07-31 08:51:45.664159"
     },
     "requirements": {
         "raw_request": "Improve CAD generation system",
@@ -14,12 +14,17 @@
         "status": "READY_FOR_ENGINEERING"
     },
     "geometry": {
-        "parameters": {},
+        "parameters": {
+            "width": 100,
+            "height": 50,
+            "depth": 20
+        },
         "volume_mm3": null,
-        "mass_grams": null
+        "mass_grams": null,
+        "source": "cad_generator_agent"
     },
     "material": {
-        "name": null,
+        "name": "PETG",
         "strength": null,
         "temperature_limit": null
     },
@@ -27,12 +32,18 @@
         "process": "3d_printing",
         "printer": "MyEngineer Farm",
         "print_time_hours": 4,
-        "cost": 8.5
+        "cost": 8.5,
+        "mass_grams": 120,
+        "material": "PETG",
+        "estimated_cost": 8.5
     },
     "validation": {
         "stress": {
             "load_newtons": 50,
-            "material": "PETG",
+            "material": {
+                "name": "PETG",
+                "reason": "selected by engineering rules"
+            },
             "safety_factor": 2.4,
             "deformation_mm": 0.18,
             "result": "APPROVE"

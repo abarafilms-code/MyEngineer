@@ -1,5 +1,4 @@
 from automation.core.context_agent import ContextAgent
-from automation.core.manufacturing_writer import ManufacturingWriter
 
 class ManufacturingAgent(ContextAgent):
 
@@ -7,8 +6,6 @@ class ManufacturingAgent(ContextAgent):
 
 
     def run(self, context):
-
-        writer = ManufacturingWriter()
 
         material = context.get(
             "material",
@@ -47,10 +44,5 @@ class ManufacturingAgent(ContextAgent):
             "Manufacturing estimate created"
         )
 
-
-        writer.write(
-            context,
-            context["manufacturing"]
-        )
 
         return context

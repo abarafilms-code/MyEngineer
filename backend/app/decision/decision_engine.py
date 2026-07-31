@@ -19,6 +19,7 @@ class DecisionEngine:
             decision["agents"] = [
                 "requirements_agent",
                 "architect_agent",
+                "material_agent",
                 "cad_engineer_agent",
                 "cad_generator_agent",
                 "stress_analysis_agent",

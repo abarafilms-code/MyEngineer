@@ -2,7 +2,6 @@ from automation.core.context_agent import ContextAgent
 
 import os
 from datetime import datetime
-from automation.core.geometry_writer import GeometryWriter
 
 
 class CADGeneratorAgent(ContextAgent):
@@ -13,8 +12,6 @@ class CADGeneratorAgent(ContextAgent):
     def run(self, context):
 
         print("\nCAD Generator Agent:")
-
-        geometry_writer = GeometryWriter()
 
 
         geometry = context.get(
@@ -119,17 +116,5 @@ def generate():
             filename
         )
 
-
-        geometry_writer.write(
-            context,
-            {
-                "parameters": {
-                    "width": 100,
-                    "height": 50,
-                    "depth": 20
-                },
-                "source": "cad_generator_agent"
-            }
-        )
 
         return context
