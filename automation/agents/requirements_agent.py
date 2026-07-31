@@ -1,4 +1,7 @@
-class RequirementsAgent:
+from automation.core.context_agent import ContextAgent
+
+
+class RequirementsAgent(ContextAgent):
 
     name = "requirements_agent"
 
@@ -33,6 +36,12 @@ class RequirementsAgent:
 
 
         context["requirements"] = requirements
+
+        self.update_context(
+            context,
+            "requirements",
+            requirements
+        )
 
 
         print(

@@ -1,3 +1,6 @@
+from automation.context.context_adapter import ContextAdapter
+
+
 class AgentManager:
 
     def __init__(self):
@@ -15,6 +18,15 @@ class AgentManager:
         result = context
 
 
+        adapter = None
+
+        if "engineering_context" in result:
+
+            adapter = ContextAdapter(
+                result["engineering_context"]
+            )
+
+
         for agent in self.agents:
 
             print(
@@ -23,9 +35,17 @@ class AgentManager:
 
             try:
 
-                result = agent.run(
-                    result
-                )
+                if adapter:
+
+                    result = agent.run(
+                        adapter.build_agent_context(result)
+                    )
+
+                else:
+
+                    result = agent.run(
+                        result
+                    )
 
             except Exception as e:
 
@@ -78,9 +98,23 @@ class AgentManager:
 
             try:
 
-                result = agent.run(
-                    result
-                )
+                if "engineering_context" in result:
+
+                    from automation.context.context_adapter import ContextAdapter
+
+                    adapter = ContextAdapter(
+                        result["engineering_context"]
+                    )
+
+                    result = agent.run(
+                        adapter.build_agent_context(result)
+                    )
+
+                else:
+
+                    result = agent.run(
+                        result
+                    )
 
             except Exception as e:
 

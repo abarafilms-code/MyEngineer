@@ -1,5 +1,6 @@
 from automation.core.agent_manager import AgentManager
 from backend.app.decision.decision_engine import DecisionEngine
+from backend.app.context.engineering_context import EngineeringContext
 from automation.orchestration.agent_router import AgentRouter
 
 from automation.agents.task_agent import TaskAgent
@@ -228,8 +229,11 @@ class AutonomousPipeline:
         )
 
 
+        self.context = EngineeringContext(task)
+
         context = {
-            "task": task
+            "task": task,
+            "engineering_context": self.context
         }
 
         decision = self.decision_engine.analyze(task)
@@ -251,6 +255,15 @@ class AutonomousPipeline:
         result = self.manager.run_route(
             context,
             route
+        )
+
+
+        print(
+            "\nEngineering Context Summary:"
+        )
+
+        print(
+            self.context.summary()
         )
 
 
