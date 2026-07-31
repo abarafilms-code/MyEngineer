@@ -1,72 +1,37 @@
-import os
+from automation.core.context_agent import ContextAgent
 
 
-class DeveloperAgent:
+class DeveloperAgent(ContextAgent):
 
     name = "developer_agent"
 
+    def __init__(self):
+        from automation.agents.code_writer_agent import CodeWriterAgent
+        self.writer = CodeWriterAgent()
 
     def run(self, context):
 
-        decision = context.get(
-            "decision",
-            {}
+        task = context.get(
+            "task",
+            ""
         )
-
-
-        targets = decision.get(
-            "targets",
-            []
-        )
-
-
-        changed = []
-
-
-        for target in targets:
-
-            if os.path.exists(target):
-
-                for root, dirs, files in os.walk(target):
-
-                    for file in files:
-
-                        if file.endswith(".py"):
-
-                            path = os.path.join(
-                                root,
-                                file
-                            )
-
-                            changed.append(path)
-
-                            if len(changed) >= 3:
-                                break
-
-
-                    if len(changed) >= 3:
-                        break
-
-
-        context["development"] = {
-
-            "analyzed_files": changed,
-            "status": "ready_for_modification"
-
-        }
-
 
         print(
-            "\nDeveloper Agent analyzed:"
+            "Developer Agent:",
+            task
         )
 
+        plan = {
+            "task": task,
+            "actions": [
+                "analyze_repository",
+                "generate_patch",
+                "run_tests"
+            ]
+        }
 
-        for item in changed:
+        context["development_plan"] = plan
 
-            print(
-                "-",
-                item
-            )
-
-
-        return context
+        return self.writer.run(
+            context
+        )
