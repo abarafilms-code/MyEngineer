@@ -25,6 +25,9 @@ class DecisionEngine:
                 "stress_analysis_agent",
                 "thermal_analysis_agent",
                 "design_decision_agent",
+                "design_iteration_agent",
+                "geometry_optimizer_agent",
+                "failure_memory_agent",
                 "manufacturing_agent"
             ]
 
