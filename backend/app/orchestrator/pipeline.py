@@ -8,6 +8,7 @@ from app.agents.cad import CADAgent
 from app.agents.manufacturing import ManufacturingAgent
 from app.agents.design_review import DesignReviewAgent
 from app.cost import CostEstimator
+from app.cad_engine import CADGenerator
 
 
 class AgentPipeline:
@@ -24,7 +25,8 @@ class AgentPipeline:
             CADAgent(),
             ManufacturingAgent(),
             DesignReviewAgent(),
-            CostEstimator()
+            CostEstimator(),
+            CADGenerator()
         ]
 
     def run(self, idea: str):
