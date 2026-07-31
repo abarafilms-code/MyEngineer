@@ -1,6 +1,4 @@
-from automation.core.context_agent import ContextAgent
-
-class MaterialAgent(ContextAgent):
+class MaterialAgent:
 
     name = "material_agent"
 
@@ -31,16 +29,6 @@ class MaterialAgent(ContextAgent):
 
         }
 
-
-        self.update_context(
-            context,
-            "material",
-            {
-                "name": material,
-                "strength": None,
-                "temperature_limit": None
-            }
-        )
 
         print(
             "Material selected:",

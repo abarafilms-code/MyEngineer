@@ -1,6 +1,4 @@
-from automation.core.context_agent import ContextAgent
-
-class StressAnalysisAgent(ContextAgent):
+class StressAnalysisAgent:
 
     name = "stress_analysis_agent"
 
@@ -27,14 +25,6 @@ class StressAnalysisAgent(ContextAgent):
 
         context["stress_analysis"] = analysis
 
-
-        self.update_context(
-            context,
-            "validation",
-            {
-                "stress": analysis
-            }
-        )
 
         print(
             "Stress Analysis:",

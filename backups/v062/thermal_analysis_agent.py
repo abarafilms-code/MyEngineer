@@ -1,6 +1,4 @@
-from automation.core.context_agent import ContextAgent
-
-class ThermalAnalysisAgent(ContextAgent):
+class ThermalAnalysisAgent:
 
     name = "thermal_analysis_agent"
 
@@ -22,14 +20,6 @@ class ThermalAnalysisAgent(ContextAgent):
 
         context["thermal_analysis"] = thermal
 
-
-        self.update_context(
-            context,
-            "validation",
-            {
-                "thermal": thermal
-            }
-        )
 
         print(
             "Thermal Analysis:",

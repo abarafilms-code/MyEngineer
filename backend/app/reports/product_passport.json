@@ -1,7 +1,7 @@
 {
     "project": {
         "task": "Improve CAD generation system",
-        "created": "2026-07-31 08:39:29.812455"
+        "created": "2026-07-31 08:45:41.691594"
     },
     "requirements": {
         "raw_request": "Improve CAD generation system",
@@ -24,14 +24,25 @@
         "temperature_limit": null
     },
     "manufacturing": {
-        "process": null,
-        "printer": null,
-        "print_time_hours": null,
-        "cost": null
+        "process": "3d_printing",
+        "printer": "MyEngineer Farm",
+        "print_time_hours": 4,
+        "cost": 8.5
     },
     "validation": {
-        "stress": null,
-        "thermal": null,
+        "stress": {
+            "load_newtons": 50,
+            "material": "PETG",
+            "safety_factor": 2.4,
+            "deformation_mm": 0.18,
+            "result": "APPROVE"
+        },
+        "thermal": {
+            "operating_temperature_c": 60,
+            "material_limit_c": 80,
+            "thermal_margin": 20,
+            "result": "APPROVE"
+        },
         "tolerance": null
     },
     "decisions": [],

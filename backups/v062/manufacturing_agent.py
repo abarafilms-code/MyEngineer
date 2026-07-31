@@ -1,6 +1,4 @@
-from automation.core.context_agent import ContextAgent
-
-class ManufacturingAgent(ContextAgent):
+class ManufacturingAgent:
 
     name = "manufacturing_agent"
 
@@ -28,17 +26,6 @@ class ManufacturingAgent(ContextAgent):
 
         }
 
-
-        self.update_context(
-            context,
-            "manufacturing",
-            {
-                "process": "3d_printing",
-                "printer": "MyEngineer Farm",
-                "print_time_hours": 4,
-                "cost": 8.5
-            }
-        )
 
         print(
             "Manufacturing estimate created"

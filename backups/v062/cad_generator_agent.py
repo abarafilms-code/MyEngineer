@@ -1,10 +1,8 @@
-from automation.core.context_agent import ContextAgent
-
 import os
 from datetime import datetime
 
 
-class CADGeneratorAgent(ContextAgent):
+class CADGeneratorAgent:
 
     name = "cad_generator_agent"
 
