@@ -1,30 +1,18 @@
-from app.cad_engine.parameters import CADParameters
-from app.cad_engine.constraints import CADConstraints
-from app.cad_engine.templates import CADTemplates
+from backend.app.cad_engine.parameters import CADParameters
 
 
 class CADGenerator:
 
-    name = "cad_generator"
 
     def __init__(self):
+
         self.parameters = CADParameters()
-        self.constraints = CADConstraints()
-        self.templates = CADTemplates()
 
 
-    def run(self, idea: str):
 
-        params = self.parameters.get()
+    def generate(self):
 
         return {
-            "idea": idea,
-            "template": self.templates.industrial_enclosure(),
-            "parameters": params,
-            "constraints": self.constraints.check(params),
-            "output_formats": [
-                "STEP",
-                "STL",
-                "OBJ"
-            ]
+            "status": "generated",
+            "parameters": self.parameters
         }
