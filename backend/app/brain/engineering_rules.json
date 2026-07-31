@@ -1,0 +1,28 @@
+{
+    "rules": [
+        {
+            "condition": "low_safety_factor",
+            "action": "increase_wall_thickness",
+            "parameter": "wall_thickness_mm",
+            "value": 1
+        },
+        {
+            "condition": "high_deformation",
+            "action": "increase_infill",
+            "parameter": "infill_percent",
+            "value": 10
+        },
+        {
+            "condition": "thermal_limit_close",
+            "action": "change_material",
+            "parameter": "material",
+            "value": "ASA"
+        },
+        {
+            "condition": "print_failure",
+            "action": "improve_support_strategy",
+            "parameter": "supports",
+            "value": "optimized"
+        }
+    ]
+}
