@@ -11,6 +11,7 @@ from automation.agents.cad_engineer_agent import CADEngineerAgent
 from automation.agents.geometry_agent import GeometryAgent
 from automation.agents.cad_generator_agent import CADGeneratorAgent
 from automation.agents.cad_kernel_agent import CADKernelAgent
+from automation.agents.architect_agent import ArchitectAgent
 from automation.agents.material_agent import MaterialAgent
 from automation.agents.manufacturing_agent import ManufacturingAgent
 from automation.agents.export_agent import ExportAgent
