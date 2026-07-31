@@ -1,3 +1,4 @@
+from automation.agents.analyzer_agent import AnalyzerAgent
 from automation.agents.planner_agent import PlannerAgent
 from automation.agents.coder_agent import CoderAgent
 from automation.agents.test_agent import TestAgent
@@ -8,6 +9,7 @@ from automation.agents.github_agent import GithubAgent
 class DevelopmentLoop:
 
     def __init__(self):
+        self.analyzer = AnalyzerAgent()
         self.planner = PlannerAgent()
         self.coder = CoderAgent()
         self.test = TestAgent()
@@ -17,13 +19,22 @@ class DevelopmentLoop:
 
     def execute(self, task="Improve CAD generation system"):
 
+        print("\nAnalyzing project...")
+
+        analysis = self.analyzer.run()
+
+        print(
+            f"Found Python files: {analysis['count']}"
+        )
+
+        for file in analysis["files"][:10]:
+            print("-", file)
+
+
         print("\nPlanning task:")
-        print(task)
 
         plan = self.planner.run(task)
 
-
-        print("\nDevelopment plan:")
         for step in plan["plan"]:
             print("-", step)
 
@@ -35,14 +46,8 @@ class DevelopmentLoop:
         )
 
 
-        if not code_result["success"]:
-            raise Exception("Coder failed")
-
-
-        print("Created files:")
-
         for file in code_result["files"]:
-            print("-", file)
+            print("Created:", file)
 
 
         print("\nRunning tests...")
@@ -51,10 +56,8 @@ class DevelopmentLoop:
 
         if not test_result["success"]:
             raise Exception(
-                "Tests failed:\n" +
                 test_result["output"]
             )
-
 
         print("Tests passed")
 
@@ -63,19 +66,19 @@ class DevelopmentLoop:
             test_result["output"]
         )
 
-
         if not review["approved"]:
             raise Exception(
                 review["issues"]
             )
 
-
         print("Review approved")
 
 
         self.github.commit(
-            "feat: add coder agent development cycle"
+            "feat: add analyzer agent cycle"
         )
+
+        print("Changes committed")
 
         self.github.push()
 
