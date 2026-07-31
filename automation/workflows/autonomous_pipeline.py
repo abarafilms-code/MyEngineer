@@ -14,6 +14,7 @@ from automation.agents.cad_kernel_agent import CADKernelAgent
 from automation.agents.material_agent import MaterialAgent
 from automation.agents.manufacturing_agent import ManufacturingAgent
 from automation.agents.export_agent import ExportAgent
+from automation.agents.cost_engine_agent import CostEngineAgent
 from automation.agents.simulation_agent import SimulationAgent
 from automation.agents.test_agent import TestAgent
 from automation.agents.reviewer_agent import ReviewerAgent
@@ -76,6 +77,10 @@ class AutonomousPipeline:
 
         self.manager.register(
             ExportAgent()
+        )
+
+        self.manager.register(
+            CostEngineAgent()
         )
 
         self.manager.register(
