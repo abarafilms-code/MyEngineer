@@ -28,6 +28,8 @@ class DecisionEngine:
                 "design_iteration_agent",
                 "geometry_optimizer_agent",
                 "failure_memory_agent",
+                "geometry_agent",
+                "cad_memory_agent",
                 "manufacturing_agent"
             ]
 
