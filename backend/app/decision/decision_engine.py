@@ -24,6 +24,7 @@ class DecisionEngine:
                 "cad_generator_agent",
                 "stress_analysis_agent",
                 "thermal_analysis_agent",
+                "design_decision_agent",
                 "manufacturing_agent"
             ]
 

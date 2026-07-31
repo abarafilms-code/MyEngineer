@@ -23,6 +23,7 @@ from automation.agents.tolerance_agent import ToleranceAgent
 from automation.agents.requirements_agent import RequirementsAgent
 from automation.agents.design_review_agent import DesignReviewAgent
 from automation.agents.failure_prediction_agent import FailurePredictionAgent
+from automation.agents.design_decision_agent import DesignDecisionAgent
 
 from automation.agents.architect_agent import ArchitectAgent
 from automation.agents.material_agent import MaterialAgent
@@ -135,6 +136,10 @@ class AutonomousPipeline:
 
         self.manager.register(
             ManufacturingAgent()
+        )
+
+        self.manager.register(
+            DesignDecisionAgent()
         )
 
         self.manager.register(
