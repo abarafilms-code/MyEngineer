@@ -1,4 +1,12 @@
+from automation.orchestration.workflow_graph import WorkflowGraph
+
+
 class AgentRouter:
+
+    def __init__(self):
+        self.workflow = WorkflowGraph()
+        self.workflow.build_cad_workflow()
+
 
     def route(self, task):
 
@@ -31,5 +39,10 @@ class AgentRouter:
                 "sales_agent",
                 "order_to_factory_agent"
             ]
+
+        if "cad" in task or "design" in task:
+            return self.workflow.resolve(
+                "requirements_agent"
+            )
 
         return pipeline
