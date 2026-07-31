@@ -16,7 +16,6 @@ class TaskAgent:
 
         context["task_analysis"] = {
             "original": task,
-            "type": "engineering",
             "keywords": []
         }
 
@@ -24,17 +23,26 @@ class TaskAgent:
         keywords = []
 
 
-        if "cad" in task_lower:
-            keywords.append("cad")
+        for word in [
+            "cad",
+            "geometry",
+            "3d",
+            "printing",
+            "manufacturing",
+            "engineering"
+        ]:
 
-        if "geometry" in task_lower:
-            keywords.append("geometry")
-
-        if "print" in task_lower:
-            keywords.append("3d_printing")
+            if word in task_lower:
+                keywords.append(word)
 
 
         context["task_analysis"]["keywords"] = keywords
+
+
+        print(
+            "Task analyzed:",
+            keywords
+        )
 
 
         return context
