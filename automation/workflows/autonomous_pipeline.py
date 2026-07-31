@@ -7,6 +7,7 @@ from automation.agents.coder_agent import CoderAgent
 from automation.agents.test_agent import TestAgent
 from automation.agents.reviewer_agent import ReviewerAgent
 from automation.agents.memory_agent import MemoryAgent
+from automation.agents.knowledge_agent import KnowledgeAgent
 
 
 class AutonomousPipeline:
@@ -38,6 +39,10 @@ class AutonomousPipeline:
 
         self.manager.register(
             ReviewerAgent()
+        )
+
+        self.manager.register(
+            KnowledgeAgent()
         )
 
         self.manager.register(

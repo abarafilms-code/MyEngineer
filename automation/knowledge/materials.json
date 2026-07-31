@@ -1,0 +1,50 @@
+{
+  "PLA": {
+    "temperature_nozzle": "190-220C",
+    "bed_temperature": "50-60C",
+    "strength": "medium",
+    "use": [
+      "prototype",
+      "models"
+    ]
+  },
+
+  "PETG": {
+    "temperature_nozzle": "230-250C",
+    "bed_temperature": "70-90C",
+    "strength": "high",
+    "use": [
+      "functional parts",
+      "enclosures"
+    ]
+  },
+
+  "ASA": {
+    "temperature_nozzle": "240-260C",
+    "bed_temperature": "90-110C",
+    "strength": "high",
+    "uv_resistant": true,
+    "use": [
+      "outdoor",
+      "industrial parts"
+    ]
+  },
+
+  "ABS": {
+    "temperature_nozzle": "230-250C",
+    "bed_temperature": "90-110C",
+    "strength": "high",
+    "use": [
+      "engineering parts"
+    ]
+  },
+
+  "PA6_CF": {
+    "temperature_nozzle": "260-300C",
+    "bed_temperature": "90-120C",
+    "strength": "very high",
+    "use": [
+      "mechanical parts"
+    ]
+  }
+}
