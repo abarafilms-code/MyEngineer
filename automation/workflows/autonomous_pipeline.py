@@ -41,6 +41,7 @@ from automation.agents.reviewer_agent import ReviewerAgent
 from automation.agents.knowledge_agent import KnowledgeAgent
 from automation.agents.memory_agent import MemoryAgent
 from automation.agents.orchestrator_v2_agent import OrchestratorV2Agent
+from automation.agents.digital_twin_agent import DigitalTwinAgent
 
 
 
@@ -178,6 +179,10 @@ class AutonomousPipeline:
 
         self.manager.register(
             OrchestratorV2Agent()
+        )
+
+        self.manager.register(
+            DigitalTwinAgent()
         )
 
 
