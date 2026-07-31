@@ -1,0 +1,20 @@
+{
+  "design_rules": [
+    {
+      "rule": "minimum_wall_thickness",
+      "description": "Минимальная толщина стенки зависит от материала и технологии"
+    },
+    {
+      "rule": "overhang_angle",
+      "description": "Для FDM печати желательно избегать свесов больше 45 градусов"
+    },
+    {
+      "rule": "support_reduction",
+      "description": "Оптимизировать геометрию для уменьшения поддержек"
+    },
+    {
+      "rule": "assembly_design",
+      "description": "Детали должны учитывать сборку и обслуживание"
+    }
+  ]
+}

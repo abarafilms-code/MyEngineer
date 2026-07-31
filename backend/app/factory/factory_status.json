@@ -1,0 +1,7 @@
+{
+    "factory": "MyEngineer Autonomous Factory",
+    "status": "RUNNING",
+    "ai_control": true,
+    "production": "ACTIVE",
+    "quality": "APPROVED"
+}
