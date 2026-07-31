@@ -2,6 +2,7 @@ from automation.core.context_agent import ContextAgent
 
 from automation.brain.experience_store import EngineeringExperienceStore
 from automation.brain.rule_generator import EngineeringRuleGenerator
+from automation.brain.knowledge_evaluator import KnowledgeEvaluator
 from automation.brain.rule_promotion import RulePromotionEngine
 
 
@@ -15,6 +16,7 @@ class SelfLearningAgent(ContextAgent):
         self.memory = EngineeringExperienceStore()
 
         self.generator = EngineeringRuleGenerator()
+        self.evaluator = KnowledgeEvaluator()
         self.promoter = RulePromotionEngine()
 
 
@@ -66,6 +68,17 @@ class SelfLearningAgent(ContextAgent):
         context[
             "generated_rules"
         ] = new_rules
+
+        context[
+            "confidence_evaluation"
+        ] = [
+            self.evaluator.evaluate_rule(
+                {
+                    "confidence": 0.5
+                }
+            )
+            for rule in new_rules
+        ]
 
 
         promoted = self.promoter.promote()
