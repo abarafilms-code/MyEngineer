@@ -9,6 +9,8 @@ from app.agents.manufacturing import ManufacturingAgent
 from app.agents.design_review import DesignReviewAgent
 from app.cost import CostEstimator
 from app.cad_engine import CADGenerator
+from app.cad_engine.intelligence.analyzer import CADAnalyzer
+from app.cad_engine.intelligence.dimensions import DimensionEngine
 
 
 class AgentPipeline:
@@ -26,7 +28,9 @@ class AgentPipeline:
             ManufacturingAgent(),
             DesignReviewAgent(),
             CostEstimator(),
-            CADGenerator()
+            CADGenerator(),
+            CADAnalyzer(),
+            DimensionEngine()
         ]
 
     def run(self, idea: str):
