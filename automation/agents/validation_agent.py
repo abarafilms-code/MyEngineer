@@ -1,3 +1,7 @@
+import os
+import py_compile
+
+
 class ValidationAgent:
 
     name = "validation_agent"
@@ -7,17 +11,70 @@ class ValidationAgent:
 
         print("\nValidation Agent:")
 
-        validation = {
-            "geometry": True,
-            "manufacturing": True,
-            "materials": True,
+
+        changes = context.get(
+            "code_changes",
+            {}
+        )
+
+
+        files = changes.get(
+            "created_files",
+            []
+        )
+
+
+        result = {
+            "checked": [],
+            "errors": [],
             "status": "approved"
         }
 
-        context["validation"] = validation
+
+        for file in files:
+
+            if os.path.exists(file):
+
+                result["checked"].append(
+                    file
+                )
+
+                try:
+
+                    py_compile.compile(
+                        file,
+                        doraise=True
+                    )
+
+
+                except Exception as e:
+
+                    result["errors"].append(
+                        {
+                            "file": file,
+                            "error": str(e)
+                        }
+                    )
+
+
+        if result["errors"]:
+
+            result["status"] = "failed"
+
+
+        context["validation"] = result
+
 
         print(
-            "CAD validation passed"
+            "Checked:",
+            len(result["checked"])
         )
+
+
+        print(
+            "Status:",
+            result["status"]
+        )
+
 
         return context
